@@ -57,6 +57,17 @@ python -m app.main
 
 The API will be available at `http://localhost:8000`.
 
+## Adding new models
+To add a new model to the system, you need to follow two main steps:
+
+### 1. Interface Implementation
+First, create your new analyzer class that implements the `ReviewAnalyzerInterface`. This ensures your new model follows the same contract as other analyzers in the system. The interface requires implementing the `analyze()` method that takes a text string and returns a dictionary with the analysis results. Your implementation should handle the specific logic for sentiment analysis, readability scoring, and generating suggestions according to your model's capabilities.
+
+### 2. Dependency Injection Update
+After implementing your analyzer, modify the dependency injection system by updating the `get_review_analyzer()` function in `dependencies.py`. Add logic to select between different analyzer implementations based on configuration (like environment variables or settings). This allows the system to switch between different analyzer implementations without changing the rest of the application code. The dependency injection ensures loose coupling between components and makes testing easier by allowing mock implementations to be injected.
+
+These changes maintain the system's modularity while allowing new analysis models to be added with minimal impact on existing code.
+
 ## 📖 API Documentation
 
 - **Swagger UI**: `http://localhost:8000/docs`
