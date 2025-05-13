@@ -13,3 +13,13 @@ def test_positive_sentiment(analyzer):
     assert feedback.sentiment == "positive"
     assert isinstance(feedback.readability_score, float)
     assert isinstance(feedback.suggestions, list)
+
+    review = ReviewRequest(text="THIS IS AMAZING I LOVE IT!!!!!!!!!!")
+    result = analyzer.analyze(review.text)
+    feedback = ReviewFeedback(**result)
+    assert feedback.sentiment == "positive"
+    assert isinstance(feedback.readability_score, float)
+    assert isinstance(feedback.suggestions, list)
+    assert len(feedback.suggestions) > 0
+    assert "Avoid excessive exclamation marks." in feedback.suggestions
+    assert "Avoid writing in all caps." in feedback.suggestions

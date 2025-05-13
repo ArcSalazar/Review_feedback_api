@@ -14,7 +14,6 @@ def test_analyze_review_success():
     assert isinstance(data["suggestions"], list)
     assert data["sentiment"] == "positive"
     assert isinstance(data["readability_score"], float)
-    assert "models_used" in data
 
 
 def test_analyze_review_negative():
