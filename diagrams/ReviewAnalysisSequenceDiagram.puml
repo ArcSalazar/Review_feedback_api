@@ -1,0 +1,43 @@
+@startuml Review Analysis Sequence
+
+actor Client
+participant "FastAPI Server" as API
+participant "ReviewEndpoint" as Endpoint
+participant "MockReviewAnalyzer" as Analyzer
+database "Logging System" as Log
+
+Client -> API: POST /api/v1/reviews\n{text: "Product review"}
+activate API
+
+API -> Endpoint: get_review_feedback(review_text)
+activate Endpoint
+
+Endpoint -> Log: info("Processing review...")
+activate Log
+Log --> Endpoint
+deactivate Log
+
+Endpoint -> Analyzer: analyze(text)
+activate Analyzer
+
+Analyzer -> Analyzer: _determine_sentiment(text)
+Analyzer -> Analyzer: _calculate_readability(text)
+Analyzer -> Analyzer: _generate_suggestions(text)
+
+Analyzer -> Log: info("Analysis completed")
+activate Log
+Log --> Analyzer
+deactivate Log
+
+Analyzer --> Endpoint: return analysis_result
+deactivate Analyzer
+
+Endpoint -> Endpoint: create ReviewFeedback object
+
+Endpoint --> API: return ReviewFeedback
+deactivate Endpoint
+
+API --> Client: HTTP 200 OK\n{sentiment, readability_score, suggestions}
+deactivate API
+
+@enduml

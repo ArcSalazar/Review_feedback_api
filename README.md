@@ -63,8 +63,6 @@ The API will be available at `http://localhost:8000`.
 
 ## 📝 API Usage Examples
 
-### Analyze a Single Review
-
 ```bash
 curl -X POST "http://localhost:8000/api/v1/analyze" \
      -H "Content-Type: application/json" \
@@ -95,6 +93,9 @@ Example Response:
   }
 }
 ```
+
+## API sequence diagram
+![Review_Analysis_Sequence.png](diagrams/Review_Analysis_Sequence.png)
 
 ## 🧪 Running Tests
 
@@ -132,7 +133,11 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project was developed using AI-assisted tools:
 - ChatGPT for project planning and base architecture
-- JetBrains AI with Claude 3.5 Sonnet for coding and documentation assistance
+- JetBrains AI with Claude 3.5 Sonnet for coding and documentation assistance (around 30% improvement speed)
+- JetBrains AI with Claude 3.5 Sonnet for plantUML diagram
+- Claude Sonnet for the Readme.md
+- 
+
 
 ## 📄 License
 
