@@ -147,7 +147,7 @@ This project was developed using AI-assisted tools:
 - JetBrains AI with Claude 3.5 Sonnet for coding and documentation assistance (around 30% improvement speed)
 - JetBrains AI with Claude 3.5 Sonnet for plantUML diagram
 - Claude Sonnet for the Readme.md
-- 
+- AI usage evidence in [evidence_IA_usage](evidence_IA_usage)
 
 
 ## 📄 License
