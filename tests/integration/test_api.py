@@ -38,6 +38,13 @@ def test_analyze_review_suggestions():
     assert "Avoid excessive exclamation marks." in data["suggestions"]
 
 
+def test_analyze_review_readability_value():
+    response = client.post("/api/v1/reviews", json={"text": "one two three four."})
+    assert response.status_code == 200
+    data = response.json()
+    assert data["readability_score"] == 4.0
+
+
 def test_analyze_review_validation_error():
     response = client.post("/api/v1/reviews", json={"text": ""})
     assert response.status_code == 422

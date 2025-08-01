@@ -115,6 +115,21 @@ Example Response:
 tox
 ```
 
+### Test Structure
+
+The `tests` directory contains two levels of tests:
+
+- **Unit tests** in `tests/unit` validate individual components like the mock
+  analyzer and Pydantic models.
+- **Integration tests** in `tests/integration` exercise the FastAPI routes using
+  `TestClient` to ensure end-to-end behaviour.
+
+You can run a specific test file with:
+
+```bash
+pytest tests/unit/test_mock_analyzer.py
+```
+
 ## 🔄 Development Workflow
 
 1. Create a feature branch from `main`
